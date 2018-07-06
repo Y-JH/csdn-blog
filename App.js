@@ -4,65 +4,26 @@
  * @flow
  */
 
-import React, {Component} from 'react';
-import {
-    Platform,
-    StyleSheet,
-    Text,
-    View,
-    TouchableWithoutFeedback
-} from 'react-native';
-import Toast, {DURATION} from 'react-native-easy-toast';
+import {StackNavigator,NavigationActions} from 'react-navigation';
+import FlatlistScreen from './module/src/screens/FlatlistScreen';
+import NavigationScreen from './module/src/screens/NavigationScreen';
+import HomeScreen from './module/src/screens/HomeScreen';
 
-const instructions = Platform.select({
-    ios: 'Press Cmd+R to reload,\n' +
-    'Cmd+D or shake for dev menu',
-    android: 'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
-
-export default class App extends Component<{}> {
-
-    _toast(){
-        this.refs.toast.show("hello world.", DURATION.LENGTH_SHORT);
-    }
-
-    render() {
-        return (<TouchableWithoutFeedback style={styles.container} onPress = {this._toast.bind(this)}>
-                <View style={styles.container}>
-                    <Text style={styles.welcome}>
-                        Welcome to React Native!
-                    </Text>
-                    <Text style={styles.instructions}>
-                        To get started, edit App.js
-                    </Text>
-                    <Text style={styles.instructions}>
-                        {instructions}
-                    </Text>
-
-                    <Toast ref = 'toast'/>
-                </View>
-            </TouchableWithoutFeedback>
-
-        );
-    }
-}
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#F5FCFF',
+export const AppNavigator = StackNavigator(
+    {
+        home:{
+            screen:HomeScreen,
+        },
+        flat_list:{
+            screen:FlatlistScreen,
+        },
+        navigation:{
+            screen:NavigationScreen,
+        }
+    }, {
+        initialRouteName: 'home', // 默认显示界面
+        headerMode: 'none',//导航栏的显示模式-隐藏导航栏
+        mode:'card',//页面切换模式-普通app常用的左右切换
     },
-    welcome: {
-        fontSize: 20,
-        textAlign: 'center',
-        margin: 10,
-    },
-    instructions: {
-        textAlign: 'center',
-        color: '#333333',
-        marginBottom: 5,
-    },
-});
+);
+
