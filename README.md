@@ -14,3 +14,5 @@
 "react-native": "0.51.0", <br>
 "react-native-easy-toast": "^1.1.0", <br>
 "react-navigation": "^1.5.6"<br>
+
+该版本主要测试实现 FlatList 组件的功能；
