@@ -20,24 +20,25 @@ export default class FlatlistScreen extends Component {
         return (<View style={styles.line}/>)
     }
 
+    getData(){
+        const data = [];
+        for (let i = 0; i < 8; i ++){
+            data.push({id: i, title: '亲子折扣日带娃儿玩'+i+'折起', state: '进行中', date: '2018/06/0'+(8-i)},)
+        }
+        return data;
+    }
+
     render() {
         return (<View style={styles.container}>
             <TitleBar
                 {...this.props}
-                title = "FlatList功能展示"
+                title = "FlatList"
                 headerBar = {{backgroundColor:Colors.black}}
                 statusBar = {{backgroundColor:Colors.black}}
             />
             <MyFlatList
                 itemSeparator={() => this.separator()}
-                data={[
-                    {id: 0, title: '亲子折扣日带娃儿玩3折起', state: '进行中', date: '2018/06/07'},
-                    {id: 1, title: '亲子折扣日带娃儿玩3折起', state: '进行中', date: '2018/06/07'},
-                    {id: 2, title: '亲子折扣日带娃儿玩3折起', state: '进行中', date: '2018/06/07'},
-                    {id: 3, title: '亲子折扣日带娃儿玩3折起', state: '进行中', date: '2018/06/07'},
-                    {id: 4, title: '亲子折扣日带娃儿玩3折起', state: '进行中', date: '2018/06/07'},
-                    {id: 5, title: '亲子折扣日带娃儿玩3折起', state: '进行中', date: '2018/06/07'},
-                ]}
+                data={this.getData()}
             />
         </View>);
     }
