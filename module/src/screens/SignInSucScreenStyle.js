@@ -11,17 +11,9 @@ export const styles = StyleSheet.create({
         alignSelf:'center',
         fontSize: 20,
         fontWeight: '400', color: Colors.white},
-    text_input: {
-        marginTop:15,
-        marginHorizontal:15,
-        height: 50,
-        borderWidth: 0.5,
-        borderColor: '#0f0f0f',
-        borderRadius:6,
-        fontSize: 16,
-        padding: 4,
-        backgroundColor:Colors.transparent,
-
+    line: {
+        height: 1,
+        backgroundColor: Colors.transparent
     },
     button_sign:{
         marginTop:80,
@@ -31,5 +23,19 @@ export const styles = StyleSheet.create({
         borderRadius:8,
         height:50,
         marginHorizontal:30,
+    },
+    account:{
+        fontSize: 20,
+        color: '#000',
+        fontWeight: '600',
+        width: 80,
+        textAlign: 'center'
+    },
+    password:{
+        fontSize: 20,
+        color: '#000',
+        fontWeight: '600',
+        width: 80,
+        textAlign: 'center'
     }
 });

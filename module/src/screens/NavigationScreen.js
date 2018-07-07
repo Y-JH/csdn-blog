@@ -4,24 +4,85 @@
  */
 
 import React, {Component} from 'react';
-import {View, Text, FlatList} from 'react-native';
+import {View, Text, FlatList, TextInput, TouchableOpacity} from 'react-native';
 import {styles} from './NavigationScreenStyle';
+import TitleBar from "../common/TitleBar";
+import {Colors} from "../common/Colors";
 
 export default class NavigationScreen extends Component {
     constructor(props) {
         super(props);
+
+        this.state = {
+            account: '',
+            password: '',
+            user: {},
+        };
     }
 
+    /**
+     * 功能：登录
+     * @private
+     */
+    _signIn() {
+        this.props.navigation.navigate("signIn", this.state.user);
+    }
 
     render() {
+        const limit = 16;
         return (<View style={styles.container}>
-            <Text style={{
-                fontSize:40,
-                fontWeight:'600',
-                color:'#000',
-                alignSelf:'center',
-                textAlign:'center'
-            }}>hello world</Text>
+            <TitleBar
+                {...this.props}
+                title="Navigation"
+                headerBar={{backgroundColor: Colors.black}}
+                statusBar={{backgroundColor: Colors.black}}
+            />
+            <TextInput
+                multiline={false}
+                maxLength={limit}
+                placeholder={'请输入账号'}
+                underlineColorAndroid='transparent'
+                placeholderTextColor={Colors.gray_66}
+                onChangeText={(acc) => {
+                    acc = acc.replace(/ /g, '_');
+                    this.setState({
+                        account: acc,
+                        user: {
+                            user_account: acc,
+                            user_password: this.state.password}
+                    });
+                }}
+                style={styles.text_input}
+                value={this.state.account}
+            />
+            <TextInput
+                multiline={false}
+                maxLength={limit}
+                password = {true}
+                placeholder={'请输入密码'}
+                underlineColorAndroid='transparent'
+                placeholderTextColor={Colors.gray_66}
+                onChangeText={(pw) => {
+                    pw = pw.replace(/ /g, '_');
+                    this.setState({
+                        password: pw,
+                        user: {
+                            user_password: pw,
+                            user_account:this.state.account
+                        }
+
+                    });
+                }}
+                style={styles.text_input}
+                value={this.state.password}
+            />
+            <TouchableOpacity
+                onPress={() => this._signIn()}
+                style = {styles.button_sign}
+            >
+
+                <Text style = {styles.text}>登录</Text>
+                    </TouchableOpacity>
         </View>);
     }
 }

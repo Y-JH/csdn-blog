@@ -8,6 +8,7 @@ import {StackNavigator, NavigationActions} from 'react-navigation';
 import FlatlistScreen from './module/src/screens/FlatlistScreen';
 import NavigationScreen from './module/src/screens/NavigationScreen';
 import HomeScreen from './module/src/screens/HomeScreen';
+import SignInSucScreen from './module/src/screens/SignInSucScreen';
 
 import CardStackStyleInterpolator from 'react-navigation/src/views/CardStack/CardStackStyleInterpolator';
 
@@ -38,7 +39,11 @@ export const AppNavigator = StackNavigator(
         },
         navigation: {
             screen: NavigationScreen,
-        }
+        },
+        signIn: {
+            screen: SignInSucScreen,
+        },
+
     },
 
     {
