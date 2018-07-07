@@ -4,12 +4,20 @@
  */
 
 import React, {Component} from 'react';
-import {View, Text, Image, TouchableOpacity, Platform, Dimensions, StyleSheet} from 'react-native';
-// import {myDevice} from '../common/DeviceDemensions';
+import {
+    View,
+    Text,
+    Image,
+    TouchableOpacity,
+    Platform,
+    Dimensions,
+    StyleSheet,
+    DeviceEventEmitter
+} from 'react-native';
 import {Colors} from '../common/Colors';
 import {Images} from '../common/Images';
 import Toast, {DURATION} from 'react-native-easy-toast';
-import {ScreenHeight, ScreenWidth, ScreenScale} from '../common/DeviceDemensions';
+// import {ScreenHeight, ScreenWidth, ScreenScale} from '../common/DeviceDemensions';
 
 export default class ListItem extends Component {
     constructor(props) {
@@ -20,14 +28,18 @@ export default class ListItem extends Component {
         }
     }
 
-
+    /**
+     * 测试：第一次传入的props属性 this.props.item 和 nextProps.item 是一样的内容
+     * 在这里怎么去拿到不同的判断：<MM ref='mm' /> this.refs.mm.data = data;
+     * @param nextProps
+     */
     componentWillReceiveProps(nextProps) {
-        this.refs.toast.show("hell world.", DURATION.LENGTH_SHORT);
-        if (this.props.item !== nextProps.item) {
-            this.setState({
-                list_item: nextProps.item,
-            });
-        }
+        // DeviceEventEmitter.emit('showToast', 'ListItem-ReceiveProps='+(this.props.item!==nextProps.item));
+        // if (this.props.item !== nextProps.item) {
+        //     this.setState({
+        //         list_item: nextProps.item,
+        //     });
+        // }
     }
 
 
@@ -52,22 +64,25 @@ export default class ListItem extends Component {
 const styles = StyleSheet.create({
     item_container: {
         marginVertical:5,
-        width: ScreenWidth - 40,
-        height: ScreenHeight / 3+20,
+        width: 300,//ScreenWidth - 40
+        height: 250,//ScreenHeight / 3+20
         backgroundColor: Colors.white,
         borderWidth: 1,
         borderColor: Colors.white,
         borderRadius: 8,
         alignSelf:'center',
         padding:20,
-        elevation:50
+        shadowOffset: {width: 1, height: 1},
+        shadowColor: 'black',
+        shadowOpacity: 1,
+        shadowRadius: 20
     },
     item_img: {
-        width: ScreenWidth - 40,
-        height: ScreenHeight * 2 / 9,
+        width: 300,//ScreenWidth - 40
+        height: 150,//ScreenHeight * 2 / 9
     },
     item_in_container: {
-        height: ScreenHeight / 9,
+        height: 60,//ScreenHeight / 9
     },
 
 

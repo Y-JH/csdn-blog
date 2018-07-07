@@ -6,7 +6,11 @@ import {StyleSheet} from 'react-native';
 import {Colors} from '../common/Colors';
 export const styles = StyleSheet.create({
     container: {flex: 1,},
-    text: {marginHorizontal: 20, padding: 20, fontSize: 20, fontWeight: '400', color: Colors.bg},
+    text: {
+        marginHorizontal: 20,
+        padding: 20,
+        fontSize: 20,
+        fontWeight: '400', color: Colors.bg},
     line: {
         height: 1,
         backgroundColor: Colors.transparent

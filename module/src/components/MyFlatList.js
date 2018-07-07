@@ -4,40 +4,23 @@
  */
 
 import React, {Component} from 'react';
-import {View, FlatList, Text} from 'react-native';
+import {View, FlatList, Text,DeviceEventEmitter} from 'react-native';
 import ListItem from './ListItem';
-import Toast, {DURATION} from 'react-native-easy-toast';
 import {Colors} from '../common/Colors';
 
 export default class MyFlatList extends Component {
     constructor(props) {
         super(props);
 
-        this.state={
-            isRefresh:true,
-            dataSource : [],
-        }
-
     }
 
-
-    componentDidMount(){
-        //制造首次进入的刷新效果
-        this.interval = setInterval(()=>{
-            clearInterval(this.interval);
-            this.setState({
-                isRefresh:false,
-            });
-
-        },1500)
-    }
-
+    /**
+     * 测试：这样不等 属性值传进来了
+     * 结合两者的结果，在使用 时候要先测试一下！
+     * @param nextProps
+     */
     componentWillReceiveProps(nextProps){
-        if(nextProps.data !== this.props.data){
-            this.setState({
-                dataSource:nextProps.data,
-            });
-        }
+        // DeviceEventEmitter.emit('showToast', 'MyFlatList-ReceiveProps=>'+(this.props.data !== nextProps.data));
     }
 
     /**
@@ -45,9 +28,9 @@ export default class MyFlatList extends Component {
      * @returns {XML}
      * @private
      */
-    _header = ()=>{
-        return (<View stlye = {{flex:1, justifyContent:'center', backgroundColor:Colors.bg}}>
-            <Text style={{fontSize:12, fontWeight:'800', color:Colors.blue, alignSelf:'center'}}>FlatList功能展示</Text>
+    _header = () => {
+        return (<View stlye={{flex: 1, justifyContent: 'center', backgroundColor: Colors.bg}}>
+            <Text style={{fontSize: 12, fontWeight: '800', color: Colors.blue, alignSelf: 'center'}}>FlatList功能展示</Text>
         </View>)
     };
 
@@ -65,59 +48,37 @@ export default class MyFlatList extends Component {
      * @param separators
      * @private
      */
-    _renderItem = ({item, separators}) => (
+    _renderItem = ({item}) => (
         <ListItem
-            onShowUnderlay={separators.highlight}
-            onHideUnderlay={separators.unhighlight}
+
             item={item}
             onPress={() => this._onItemPress()}
         />);
     _keyExtractor = (item, index) => item.id;
 
-
     /**
-     * 功能：使用箭头函数，不使用bind；因为bind函数每调用一次就会创建一个新的函数
+     * getItemLayout:用于避免动态测量内容尺寸的开销
+     * onEndReachedThreshold:取值范围(0,1)
+     * @returns {XML}
      */
-    onRefresh(){
-     //功能：制造刷新效果
-        this.interval = setInterval(()=>{
-            clearInterval(this.interval);
-            this.setState({
-                isRefresh:false,
-            });
-
-        },3000)
-    }
-
-    onLoadMore(){
-        //功能：制造上拉加载更多的效果
-        const data = [];
-        for(let i = 8; i < 12; i++){
-            data.push({id: i, title: '亲子折扣日带娃儿玩'+i+'折起', state: '已过期', date: '2018/06/0'+(i-8)},)
-        }
-        this.setState({
-            dataSource:this.state.dataSource.concat(data)
-        });
-    }
-
-
     render() {
         return (<View style={{flex: 1, backgroundColor: Colors.bg}}>
             <FlatList
-                ref = {(flatlist)=>this.flatlist = flatlist}
+                ref={(flatlist) => this.flatlist = flatlist}
                 ListHeaderComponent={this._header}
                 renderItem={this._renderItem}
                 ItemSeparatorComponent={this.props.itemSeparator}
-                data={this.state.dataSource}
+                data={this.props.data}
                 keyExtractor={this._keyExtractor}
-                onRefresh = {()=>this.onRefresh()}
-                refreshing = {this.state.isRefresh}
-                onEndReachedThreshold={20}
-                onEndReached={
-                    ()=>this.onLoadMore()
-                }
+                onRefresh={this.props.onRefresh}
+                refreshing={this.props.refreshing}
+                onEndReachedThreshold={0.1}
+                onEndReached={this.props.onLoadMore}
+                initialNumToRender={3}
+                getItemLayout={(data, index) => ({
+                    length: 250, offset: (250 + 10) * index, index
+                })}
             />
-            <Toast ref='toast'/>
         </View>);
     }
 }

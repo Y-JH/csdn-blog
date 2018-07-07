@@ -15,7 +15,13 @@ export default class NavigationScreen extends Component {
 
     render() {
         return (<View style={styles.container}>
-            <Text style={{fontSize:40, fontWeight:'600', color:'#000', alignSelf:'center',textAlign:'center'}}>hello world</Text>
+            <Text style={{
+                fontSize:40,
+                fontWeight:'600',
+                color:'#000',
+                alignSelf:'center',
+                textAlign:'center'
+            }}>hello world</Text>
         </View>);
     }
 }

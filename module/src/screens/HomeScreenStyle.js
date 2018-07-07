@@ -4,7 +4,7 @@
  */
 import {StyleSheet} from 'react-native';
 import {Colors} from '../common/Colors';
-import {ScreenWidth, ScreenHeight, ScreenScale} from '../common/DeviceDemensions';
+// import {ScreenWidth, ScreenHeight} from '../common/DeviceDemensions';
 export const styles = StyleSheet.create({
     container:{
         flex:1,
@@ -14,8 +14,8 @@ export const styles = StyleSheet.create({
     },
     button:{
         marginVertical:5,
-        width:ScreenWidth*2/3,
-        height:ScreenHeight/12,
+        width:250,//ScreenWidth*2/3
+        height:90,//ScreenHeight/12
         borderColor:Colors.gray_66,
         borderWidth:1,
         borderRadius:6,

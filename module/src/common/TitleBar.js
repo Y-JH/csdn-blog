@@ -37,6 +37,6 @@ const styles = StyleSheet.create({
     go_back: {width: 40, height: 40},
     title: {color: Colors.white, justifyContent: 'center', alignSelf: 'center', textAlign:'center', fontSize: 20},
     statusBar: {
-        //height: Platform.OS === 'android' ? 42 : 40,
+        // height: Platform.OS === 'android' ? 42 : 40,
     }
 });
