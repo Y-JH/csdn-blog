@@ -20,3 +20,6 @@
 react-navigation内置跳转动画的路径发生了改变，由<br>
 react-navigation/src/views/CardStackStyleInterpolator 改为<br>
 react-navigation/src/views/CardStack/CardStackStyleInterpolator<br>
+
+![text](https://github.com/Y-JH/csdn-blog/blob/blog0707/show_img/navigation1.png)
+![text](https://github.com/Y-JH/csdn-blog/blob/blog0707/show_img/navigation2.png)
