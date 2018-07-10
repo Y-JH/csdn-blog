@@ -8,7 +8,7 @@ import {View,DeviceEventEmitter} from 'react-native';
 import {styles} from './FlatlistScreenStyle';
 import MyFlatList from "../components/MyFlatList";
 import {Colors} from "../common/Colors";
-import TitleBar from "../common/TitleBar";
+import TitleBar from "../components/TitleBar";
 import Toast, {DURATION} from 'react-native-easy-toast';
 
 export default class FlatlistScreen extends Component {

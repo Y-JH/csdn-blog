@@ -3,7 +3,7 @@
  */
 import React, {Component} from "react";
 import {Text, View, Image, StyleSheet, StatusBar, Platform, TouchableOpacity} from "react-native";
-import {Images} from "../common/Images";
+import {Images} from "./Images";
 import {Colors} from '../common/Colors';
 export default class TitleBar extends Component {
 

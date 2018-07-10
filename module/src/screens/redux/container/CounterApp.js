@@ -5,12 +5,8 @@
  */
 
 import {StackNavigator, NavigationActions} from 'react-navigation';
-import FlatlistScreen from './module/src/screens/FlatlistScreen';
-import NavigationScreen from './module/src/screens/NavigationScreen';
-import HomeScreen from './module/src/screens/HomeScreen';
-import SignInSucScreen from './module/src/screens/SignInSucScreen';
-import CounterRoot from './module/src/screens/redux/CounterRoot';
-
+import CounterHomePage from '../pages/CounterHomePage';
+import CounterLoginPage from '../pages/CounterLoginPage';
 import CardStackStyleInterpolator from 'react-navigation/src/views/CardStack/CardStackStyleInterpolator';
 
 /**
@@ -32,26 +28,16 @@ const TransitionConfiguration = () => ({
 
 export const AppNavigator = StackNavigator(
     {
-        home: {
-            screen: HomeScreen,
+        counterHome: {
+            screen: CounterHomePage,
         },
-        flat_list: {
-            screen: FlatlistScreen,
+        counterLogin: {
+            screen: CounterLoginPage,
         },
-        navigation: {
-            screen: NavigationScreen,
-        },
-        signIn: {
-            screen: SignInSucScreen,
-        },
-        rootRedux:{
-            screen : CounterRoot,
-        },
-
     },
 
     {
-        initialRouteName: 'home', // 默认显示界面
+        initialRouteName: 'counterHome', // 默认显示界面
         headerMode: 'none',//导航栏的显示模式-隐藏导航栏
         transitionConfig: TransitionConfiguration,
         mode: 'card',//页面切换模式-普通app常用的左右切换

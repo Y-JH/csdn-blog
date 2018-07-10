@@ -15,7 +15,7 @@ import {
     DeviceEventEmitter
 } from 'react-native';
 import {Colors} from '../common/Colors';
-import {Images} from '../common/Images';
+import {Images} from './Images';
 import Toast, {DURATION} from 'react-native-easy-toast';
 // import {ScreenHeight, ScreenWidth, ScreenScale} from '../common/DeviceDemensions';
 

@@ -15,6 +15,7 @@
 "react-native-easy-toast": "^1.1.0", <br>
 "react-navigation": "^1.5.6"<br>
 
+<<<<<<< HEAD
   # FlatList
   ItemSeparatorComponent：分割线组件，<br>
   ListFooterComponent：结尾组件<br>
@@ -35,3 +36,13 @@
   该版本主要测试实现 FlatList 组件的功能；
 
   ![列表效果](https://github.com/Y-JH/csdn-blog/blob/blog0706/show_img/flat_list.png)
+=======
+# react-navigation<br>
+2018.02.09更新：<br>
+react-navigation内置跳转动画的路径发生了改变，由<br>
+react-navigation/src/views/CardStackStyleInterpolator 改为<br>
+react-navigation/src/views/CardStack/CardStackStyleInterpolator<br>
+
+![text](https://github.com/Y-JH/csdn-blog/blob/blog0707/show_img/navigation1.png)
+![text](https://github.com/Y-JH/csdn-blog/blob/blog0707/show_img/navigation2.png)
+>>>>>>> 729c5e4cf335bce1f223d2080a9ceee916ced317

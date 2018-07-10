@@ -21,6 +21,10 @@ export default class HomeScreen extends Component {
         this.props.navigation.navigate("navigation");
     };
 
+    _onReduxScreen= ()=> {
+        this.props.navigation.navigate("rootRedux");
+    };
+
     render() {
         return (<View style={styles.container}>
             <TouchableOpacity style = {styles.button}
@@ -38,6 +42,17 @@ export default class HomeScreen extends Component {
                 </Text>
 
             </TouchableOpacity>
+
+
+            <TouchableOpacity style = {styles.button}
+                              onPress={this._onReduxScreen}>
+                <Text style={styles.text}>
+                    Redux
+                </Text>
+
+            </TouchableOpacity>
+
+
 
         </View>);
     }

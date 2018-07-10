@@ -12,5 +12,7 @@ export const Colors = {
     gray:'#BEBEBE',
     gray_66:'#B9BBBE',
     bg:'#EDEDED',
-    transparent:'#00000000'
+    transparent:'#00000000',
+    reduxBg:'#F5FCFF',
+    reduxTextcolor:'#575757',
 };
